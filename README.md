@@ -4,10 +4,11 @@ A helper library for the Godot game engine.
 
 ## 📚 Classes
 
-* Event
-* EventTrigger
+* EventActionTrigger2D
+* EventActionTrigger3D
+* EventTouchTrigger2D
+* EventTouchTrigger3D
 * FileReader
-* INI
 * INIReader
 * INIWriter
 * InputManager

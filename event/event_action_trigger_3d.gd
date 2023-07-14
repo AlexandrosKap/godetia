@@ -1,33 +1,31 @@
 # Copyright (c) 2023 Alexandros F. G. Kapretsos
 # Distributed under the MIT License, see LICENSE file.
 
-extends Area2D
+extends Area3D
 
 const Event := preload("res://packages/godetia/event/event.gd")
 const InputManager := preload("res://packages/godetia/input/input_manager.gd")
 
 @export var action: String = "ui_accept"
-@export var is_touch: bool
+@export var is_active: bool = true
 var event: Node
 
 func _ready() -> void:
 	connect("area_entered", on_enter)
 	connect("area_exited", on_exit)
 
-func _input(_event: InputEvent) -> void:
-	if not is_touch and InputManager.is_pressed(action):
+func _process(_delta: float) -> void:
+	if is_active and InputManager.is_pressed(action):
 		trigger()
 
 ## Calls the trigger function of the current event.
 func trigger() -> void:
 	if event != null:
-		Event.trigger(event)
+		event.call(Event.TRIGGER_FUNC_NAME)
 
 func on_enter(node: Node) -> void:
-	if Event.is_event(node):
+	if node.has_method(Event.TRIGGER_FUNC_NAME):
 		event = node
-		if is_touch:
-			Event.trigger(event)
 
 func on_exit(node: Node) -> void:
 	if node == event:
