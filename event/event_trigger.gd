@@ -15,9 +15,13 @@ func _ready() -> void:
 	connect("area_exited", on_exit)
 
 func _input(_event: InputEvent) -> void:
-	if not is_touch and event != null:
-		if InputManager.is_pressed(action):
-			Event.trigger(event)
+	if not is_touch and InputManager.is_pressed(action):
+		trigger()
+
+## Calls the trigger function of the current event.
+func trigger() -> void:
+	if event != null:
+		Event.trigger(event)
 
 func on_enter(node: Node) -> void:
 	if Event.is_event(node):

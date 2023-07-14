@@ -45,12 +45,12 @@ static func add_button(action: String, button: JoyButton) -> bool:
 
 ## Return true if the input action exists and it is down.
 static func is_down(action: String) -> bool:
-	return exists(action) && Input.is_action_pressed(action)
+	return exists(action) and Input.is_action_pressed(action)
 
 ## Return true if the input action exists and it is pressed.
 static func is_pressed(action: String) -> bool:
-	return exists(action) && Input.is_action_just_pressed(action)
+	return exists(action) and Input.is_action_just_pressed(action)
 
 ## Return true if the input action exists and it is released.
 static func is_released(action: String) -> bool:
-	return exists(action) && Input.is_action_just_released(action)
+	return exists(action) and Input.is_action_just_released(action)
