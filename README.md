@@ -4,6 +4,8 @@ A helper library for the Godot game engine.
 
 ## 📚 Classes
 
+* Event
+* EventTrigger
 * FileReader
 * INI
 * INIReader
@@ -34,6 +36,7 @@ The Godetia Style is a set of style conventions for writing Godot programs.
 * Do not use the `class_name` keyword.
 * Do not use inner classes.
 * Procedures that are likely to fail should return an error value.
+* Use `assert(false)` to indicate that something should not happen.
 
 ## 📌 License
 

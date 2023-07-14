@@ -42,3 +42,15 @@ static func add_button(action: String, button: JoyButton) -> bool:
 	event.button_index = button
 	InputMap.action_add_event(action, event)
 	return false
+
+## Return true if the input action exists and it is down.
+static func is_down(action: String) -> bool:
+	return exists(action) && Input.is_action_pressed(action)
+
+## Return true if the input action exists and it is pressed.
+static func is_pressed(action: String) -> bool:
+	return exists(action) && Input.is_action_just_pressed(action)
+
+## Return true if the input action exists and it is released.
+static func is_released(action: String) -> bool:
+	return exists(action) && Input.is_action_just_released(action)
