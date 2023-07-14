@@ -1,6 +1,9 @@
+# Copyright (c) 2023 Alexandros F. G. Kapretsos
+# Distributed under the MIT License, see LICENSE file.
+
 extends RefCounted
 
-const INI := preload("res://packages/godetia/ini/INI.gd")
+const INI := preload("res://packages/godetia/ini/ini.gd")
 
 enum INIError {
 	NONE,

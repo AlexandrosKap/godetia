@@ -8,20 +8,32 @@ A helper library for the Godot game engine.
 * INI
 * INIReader
 * INIWriter
+* InputManager
 
-## 📦 Installation
+## 📦 Installation and Updating
 
-Clone the repository inside the `res://packages/` folder in your Godot project.
-That's it!
+First, if you have not already done so, create a `res://packages/` folder inside your Godot project.
+To install the library, run the following command inside the `res://packages/` folder:
+
+```sh
+git clone https://github.com/AlexandrosKap/godetia
+```
+
+To update the library, run the following command inside the library folder:
+
+```sh
+git pull
+```
 
 ## 🎨 Godetia Style
 
 The Godetia Style is a set of style conventions for writing Godot programs.
 
 * A file should be treated as a class.
-* A file should only contain one class.
-* Classes should me imported using the `preload` procedure.
-* Avoid using the `class_name` keyword.
+* A file should be imported with the `preload` procedure.
+* Do not use the `class_name` keyword.
+* Do not use inner classes.
+* Procedures that are likely to fail should return an error value.
 
 ## 📌 License
 

@@ -1,3 +1,6 @@
+# Copyright (c) 2023 Alexandros F. G. Kapretsos
+# Distributed under the MIT License, see LICENSE file.
+
 extends RefCounted
 
 ## Returns true if c is a group character.
