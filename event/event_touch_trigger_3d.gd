@@ -3,12 +3,18 @@
 
 extends Area3D
 
-const Event := preload("res://packages/godetia/event/event.gd")
+const InputManager := preload(
+	"res://packages/godetia/input/input_manager.gd"
+)
+
+const Event := preload(
+	"res://packages/godetia/event/event.gd"
+)
 
 @export var delay: float
 @export var is_hot: bool
 @export var is_active: bool = true
-var event: Node
+var event: Area3D
 
 var _timer: float = -1
 
@@ -28,12 +34,12 @@ func trigger() -> void:
 	if event != null:
 		event.call(Event.TRIGGER_FUNC_NAME)
 
-func on_enter(node: Node) -> void:
+func on_enter(node: Area3D) -> void:
 	if node.has_method(Event.TRIGGER_FUNC_NAME):
 		event = node
 		_timer = 0
 
-func on_exit(node: Node) -> void:
+func on_exit(node: Area3D) -> void:
 	if node == event:
 		event = null
 		_timer = -1

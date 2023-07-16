@@ -3,7 +3,9 @@
 
 extends RefCounted
 
-const INI := preload("res://packages/godetia/ini/ini.gd")
+const INI := preload(
+	"res://packages/godetia/ini/ini.gd"
+)
 
 var _content: String
 

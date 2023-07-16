@@ -12,6 +12,8 @@ A helper library for the Godot game engine.
 * INIReader
 * INIWriter
 * InputManager
+* InventoryItem (WIP)
+* InventorySystem (WIP)
 
 ## 📦 Installation and Updating
 
