@@ -1,18 +1,15 @@
 # Copyright (c) 2023 Alexandros F. G. Kapretsos
 # Distributed under the MIT License, see LICENSE file.
 
-extends RefCounted
-
 # NOTE: Not done!
+
+extends RefCounted
+class_name InventoryItem
 
 const NONE_ID := -1
 
-var id: int
+var id: int = NONE_ID
 var count: int
-
-func _init(_id: int, _count: int) -> void:
-	id = _id
-	count = _count
 
 func is_some() -> bool:
 	return id != NONE_ID

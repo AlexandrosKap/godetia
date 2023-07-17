@@ -2,6 +2,7 @@
 # Distributed under the MIT License, see LICENSE file.
 
 extends RefCounted
+class_name INI
 
 ## Returns true if c is a group character.
 static func is_group_char(c: String) -> bool:

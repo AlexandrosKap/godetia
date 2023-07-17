@@ -2,10 +2,7 @@
 # Distributed under the MIT License, see LICENSE file.
 
 extends RefCounted
-
-const INI := preload(
-	"res://packages/godetia/ini/ini.gd"
-)
+class_name INIWriter
 
 var _content: String
 
