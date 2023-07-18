@@ -6,9 +6,9 @@
 extends RefCounted
 class_name InventorySystem
 
-const INDEX_ERR_MSG := "row or column out of range"
+const IDX_ERR_MSG := "row or column out of range"
 
-var items: Array[InventoryItem]
+var items: Array[InventoryItemData]
 var rows: int
 var cols: int
 
@@ -17,14 +17,14 @@ func _init(_rows: int, _cols: int) -> void:
 	cols = _cols
 	for row in range(rows):
 		for col in range(cols):
-			items.append(InventoryItem.new())
+			items.append(InventoryItemData.new())
 
-func is_valid_index(row: int, col: int) -> bool:
+func is_valid_idx(row: int, col: int) -> bool:
 	return row >= 0 and row < rows and col >= 0 and col < cols
 
-func get_item(row: int, col: int) -> InventoryItem:
-	if not is_valid_index(row, col):
-		assert(false, INDEX_ERR_MSG)
+func get_item(row: int, col: int) -> InventoryItemData:
+	if not is_valid_idx(row, col):
+		assert(false, IDX_ERR_MSG)
 	return items[cols * row + col]
 
 func append_item(id: int, count: int) -> void:
@@ -34,11 +34,11 @@ func append_item(id: int, count: int) -> void:
 			break
 
 func remove_item(row: int, col: int) -> void:
-	if not is_valid_index(row, col):
-		assert(false, INDEX_ERR_MSG)
+	if not is_valid_idx(row, col):
+		assert(false, IDX_ERR_MSG)
 	if items.is_empty() or items[0].is_none():
 		return
-	var last: InventoryItem
+	var last: InventoryItemData
 	for item in items:
 		if item.is_none():
 			break
@@ -49,7 +49,7 @@ func remove_item(row: int, col: int) -> void:
 func remove_last_item() -> void:
 	if items.is_empty() or items[0].is_none():
 		return
-	var last: InventoryItem
+	var last: InventoryItemData
 	for item in items:
 		if item.is_none():
 			break

@@ -4,12 +4,13 @@
 # NOTE: Not done!
 
 extends RefCounted
-class_name InventoryItem
+class_name InventoryItemData
 
 const NONE_ID := -1
 
 var id: int = NONE_ID
 var count: int
+var group: int
 
 func is_some() -> bool:
 	return id != NONE_ID

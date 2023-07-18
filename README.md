@@ -17,7 +17,7 @@ and other similar things are included in this library.
 * INIReader
 * INIWriter
 * InputManager
-* InventoryItem (WIP)
+* InventoryItemData (WIP)
 * InventorySystem (WIP)
 
 ## 📦 Installation
