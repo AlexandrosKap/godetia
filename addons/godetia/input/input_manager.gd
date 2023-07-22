@@ -1,5 +1,5 @@
-# Copyright (c) 2023 Alexandros F. G. Kapretsos
-# Distributed under the MIT License, see LICENSE file.
+# Copyright 2023 Alexandros F. G. Kapretsos
+# SPDX-License-Identifier: Apache-2.0
 
 extends RefCounted
 class_name InputManager
@@ -8,9 +8,9 @@ class_name InputManager
 static func exists(action: String) -> bool:
 	return InputMap.has_action(action)
 
-## Makes a new input action.
+## Creates a new input action.
 ## Returns true if the input action already exists.
-static func make_action(action: String) -> bool:
+static func create_action(action: String) -> bool:
 	if exists(action):
 		return true
 	InputMap.add_action(action)

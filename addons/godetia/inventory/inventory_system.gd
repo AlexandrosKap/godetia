@@ -1,12 +1,8 @@
-# Copyright (c) 2023 Alexandros F. G. Kapretsos
-# Distributed under the MIT License, see LICENSE file.
-
-# NOTE: Not done!
+# Copyright 2023 Alexandros F. G. Kapretsos
+# SPDX-License-Identifier: Apache-2.0
 
 extends RefCounted
 class_name InventorySystem
-
-const IDX_ERR_MSG := "row or column out of range"
 
 var items: Array[InventoryItemData]
 var rows: int
@@ -17,47 +13,68 @@ func _init(_rows: int, _cols: int) -> void:
 	cols = _cols
 	for row in range(rows):
 		for col in range(cols):
-			items.append(InventoryItemData.new())
+			var it := InventoryItemData.new()
+			it.make_none()
+			items.append(it)
 
-func is_valid_idx(row: int, col: int) -> bool:
-	return row >= 0 and row < rows and col >= 0 and col < cols
+func count() -> int:
+	var result := 0
+	for it in items:
+		if it.is_some():
+			result += 1
+	return result
 
-func get_item(row: int, col: int) -> InventoryItemData:
-	if not is_valid_idx(row, col):
-		assert(false, IDX_ERR_MSG)
+func count_area(row1: int, col1: int, row2: int, col2: int) -> int:
+	var result := 0
+	for row in range(row1, row2 + 1):
+		for col in range(col1, col2 + 1):
+			if items[cols * row + col].is_some():
+				result += 1
+	return result
+
+func item(row: int, col: int) -> InventoryItemData:
 	return items[cols * row + col]
 
-func append_item(id: int, count: int) -> void:
-	for item in items:
-		if item.is_none():
-			item.change(id, count)
-			break
+func swap(row1: int, col1: int, row2: int, col2: int) -> void:
+	var temp := items[cols * row1 + col1]
+	items[cols * row1 + col1] = items[cols * row2 + col2]
+	items[cols * row2 + col2] = temp
 
-func remove_item(row: int, col: int) -> void:
-	if not is_valid_idx(row, col):
-		assert(false, IDX_ERR_MSG)
-	if items.is_empty() or items[0].is_none():
+func remove(row: int, col: int) -> void:
+	if items.is_empty():
 		return
-	var last: InventoryItemData
-	for item in items:
-		if item.is_none():
+	for i in range(cols * row + col, len(items)):
+		if i + 1 >= len(items):
 			break
-		last = item
-	items[cols * row + col].change(last.id, last.count)
-	last.change_to_none()
+		items[i] = items[i + 1]
+	items[len(items) - 1].make_none()
 
-func remove_last_item() -> void:
-	if items.is_empty() or items[0].is_none():
-		return
-	var last: InventoryItemData
-	for item in items:
-		if item.is_none():
+func append(id: int, count: int) -> void:
+	for it in items:
+		if it.is_none():
+			it.change(id, count)
 			break
-		last = item
-	last.change_to_none()
 
-func remove_all_items() -> void:
-	for item in items:
-		if item.is_none():
+func append_and_merge(id: int, count: int) -> void:
+	for it in items:
+		if it.is_none() or it.id == id:
+			it.id = id
+			it.count += count
 			break
-		item.change_to_none()
+
+func clean() -> void:
+	for it in items:
+		it.make_none()
+
+func organize() -> void:
+	for i in range(len(items)):
+		if items[i].is_none():
+			var old := i
+			for j in range(i, len(items)):
+				if items[j].is_some():
+					items[i].change(items[j].id, items[j].count)
+					items[j].make_none()
+					i = j
+					break
+			if i == old:
+				break

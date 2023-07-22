@@ -3,9 +3,7 @@
 A helper library for the Godot Game Engine.
 
 Godetia is designed to be a simple base for things that are often needed when creating a video game.
-Things like managing objects in an inventory,
-parsing configuration files,
-and other similar things are included in this library.
+Things like managing objects in an inventory and other similar things are included in this library.
 
 ## 📚 Classes
 
@@ -32,8 +30,9 @@ The Godetia Style is a set of style conventions for writing Godot programs.
 * Each class should be its own file.
 * Procedures that are likely to fail should return an error value.
 * Use `assert(false)` to indicate that something should not happen.
+* Avoid default values for class members that are not nodes.
 
 ## 📌 License
 
-The project is released under the terms of the MIT License.
+The project is released under the terms of the Apache-2.0 License.
 Please refer to the LICENSE file.

@@ -1,5 +1,5 @@
-# Copyright (c) 2023 Alexandros F. G. Kapretsos
-# Distributed under the MIT License, see LICENSE file.
+# Copyright 2023 Alexandros F. G. Kapretsos
+# SPDX-License-Identifier: Apache-2.0
 
 extends RefCounted
 class_name INI
@@ -19,7 +19,7 @@ static func is_group_string(s: String) -> bool:
 
 ## Returns true if c is a key character.
 static func is_key_char(c: String) -> bool:
-	return c == "-" or c == "_" or \
+	return c == "-" or c == "_" or c == "/" or \
 		(c >= "a" and c <= "z") or \
 		(c >= "A" and c <= "Z") or \
 		(c >= "0" and c <= "9")

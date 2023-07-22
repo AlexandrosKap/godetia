@@ -1,5 +1,5 @@
-# Copyright (c) 2023 Alexandros F. G. Kapretsos
-# Distributed under the MIT License, see LICENSE file.
+# Copyright 2023 Alexandros F. G. Kapretsos
+# SPDX-License-Identifier: Apache-2.0
 
 extends Area3D
 class_name EventTouchTrigger3D
