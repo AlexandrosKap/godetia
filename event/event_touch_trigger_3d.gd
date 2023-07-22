@@ -6,13 +6,16 @@ class_name EventTouchTrigger3D
 
 const TRIGGER_FUNC_NAME := "on_trigger"
 const TRIGGER_FUNC_ARG_COUNT := 0
+const NONE_TIME := -1
 
-@export var delay: float
-@export var is_hot: bool
-@export var is_active: bool = true
 var event: Area3D
+var delay: float
+var is_hot: bool
+var is_active: bool
+var _timer: float
 
-var _timer: float = -1
+func _init() -> void:
+	_timer = NONE_TIME
 
 func _ready() -> void:
 	connect("area_entered", on_enter)
@@ -22,7 +25,7 @@ func _process(_delta: float) -> void:
 	if is_active and _timer >= 0:
 		_timer += _delta
 		if _timer >= delay:
-			_timer = 0 if is_hot else -1
+			_timer = 0 if is_hot else NONE_TIME
 			trigger()
 
 ## Calls the trigger function of the current event.
@@ -38,4 +41,4 @@ func on_enter(node: Area3D) -> void:
 func on_exit(node: Area3D) -> void:
 	if node == event:
 		event = null
-		_timer = -1
+		_timer = NONE_TIME
