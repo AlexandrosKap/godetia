@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 extends RefCounted
-class_name InputManager
+class_name InputUtils
 
 ## Returns true if the input action exists.
 static func exists(action: String) -> bool:
@@ -10,7 +10,7 @@ static func exists(action: String) -> bool:
 
 ## Creates a new input action.
 ## Returns true if the input action already exists.
-static func create_action(action: String) -> bool:
+static func create(action: String) -> bool:
 	if exists(action):
 		return true
 	InputMap.add_action(action)
@@ -18,7 +18,7 @@ static func create_action(action: String) -> bool:
 
 ## Removes all the input events related to an input action.
 ## Returns true if the input action does not exist.
-static func clean_action(action: String) -> bool:
+static func clean(action: String) -> bool:
 	if not exists(action):
 		return true
 	InputMap.action_erase_events(action)

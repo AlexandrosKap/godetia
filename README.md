@@ -14,9 +14,10 @@ Things like managing objects in an inventory and other similar things are includ
 * INI
 * INIReader
 * INIWriter
-* InputManager
-* InventoryItemData (WIP)
-* InventorySystem (WIP)
+* InventoryItemData
+* InventorySystem
+* InputUtils
+* ProjectUtils
 
 ## 📦 Installation
 

@@ -49,17 +49,17 @@ func remove(row: int, col: int) -> void:
 		items[i] = items[i + 1]
 	items[len(items) - 1].make_none()
 
-func append(id: int, count: int) -> void:
+func append(_id: int, _count: int) -> void:
 	for it in items:
 		if it.is_none():
-			it.change(id, count)
+			it.change(_id, _count)
 			break
 
-func append_and_merge(id: int, count: int) -> void:
+func append_and_merge(_id: int, _count: int) -> void:
 	for it in items:
-		if it.is_none() or it.id == id:
-			it.id = id
-			it.count += count
+		if it.is_none() or it.id == _id:
+			it.id = _id
+			it.count += _count
 			break
 
 func clean() -> void:
