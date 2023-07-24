@@ -14,7 +14,7 @@ func _init(_rows: int, _cols: int) -> void:
 	for row in range(rows):
 		for col in range(cols):
 			var it := InventoryItemData.new()
-			it.make_none()
+			it.to_none()
 			items.append(it)
 
 func count() -> int:
@@ -47,12 +47,12 @@ func remove(row: int, col: int) -> void:
 		if i + 1 >= len(items):
 			break
 		items[i] = items[i + 1]
-	items[len(items) - 1].make_none()
+	items[len(items) - 1].to_none()
 
 func append(_id: int, _count: int) -> void:
 	for it in items:
 		if it.is_none():
-			it.change(_id, _count)
+			it.to(_id, _count)
 			break
 
 func append_and_merge(_id: int, _count: int) -> void:
@@ -64,7 +64,7 @@ func append_and_merge(_id: int, _count: int) -> void:
 
 func clean() -> void:
 	for it in items:
-		it.make_none()
+		it.to_none()
 
 func organize() -> void:
 	for i in range(len(items)):
@@ -72,8 +72,8 @@ func organize() -> void:
 			var old := i
 			for j in range(i, len(items)):
 				if items[j].is_some():
-					items[i].change(items[j].id, items[j].count)
-					items[j].make_none()
+					items[i].to(items[j].id, items[j].count)
+					items[j].to_none()
 					i = j
 					break
 			if i == old:

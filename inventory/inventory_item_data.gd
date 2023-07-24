@@ -15,10 +15,9 @@ func is_none() -> bool:
 func is_some() -> bool:
 	return id != NONE_ID
 
-func make_none() -> void:
-	id = NONE_ID
-	count = 0
-
-func change(_id: int, _count: int) -> void:
+func to(_id: int, _count: int) -> void:
 	id = _id
 	count = _count
+
+func to_none() -> void:
+	to(NONE_ID, 0)

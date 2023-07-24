@@ -18,6 +18,8 @@ Things like managing objects in an inventory and other similar things are includ
 * InventorySystem
 * InputUtils
 * ProjectUtils
+* SpriteUtils2D
+* SpriteUtils3D
 
 ## 📦 Installation
 
