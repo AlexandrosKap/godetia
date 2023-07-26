@@ -40,8 +40,11 @@ git pull
 The Godetia Style is a set of style conventions for writing Godot programs.
 
 * Each class should be its own file.
-* Avoid default values for class members.
+* No custom default values for class members.
+* Initialize nodes in the `_init` procedure.
+* Setup nodes in the `_ready` procedure.
 * Procedures that are likely to fail should return an error value.
+* An error of type bool should be true if something failed.
 * Use `assert(false)` to indicate that something should not happen.
 
 ## 📌 License

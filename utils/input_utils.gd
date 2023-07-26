@@ -8,9 +8,17 @@ class_name InputUtils
 static func exists(action: String) -> bool:
 	return InputMap.has_action(action)
 
-## Creates a new input action.
-## Returns true if the input action already exists.
-static func create(action: String) -> bool:
+## Removes the input action from the input map.
+## Returns true if the input action does not exist.
+static func remove(action: String) -> bool:
+	if not exists(action):
+		return true
+	InputMap.erase_action(action)
+	return false
+
+## Appends a new input action to the input map.
+## Returns true if the input action exists.
+static func append(action: String) -> bool:
 	if exists(action):
 		return true
 	InputMap.add_action(action)
@@ -23,6 +31,11 @@ static func clean(action: String) -> bool:
 		return true
 	InputMap.action_erase_events(action)
 	return false
+
+## Removes all the input events from all input actions.
+static func clean_all() -> void:
+	for s in InputMap.get_actions():
+		InputMap.action_erase_events(s)
 
 ## Adds a keyboard key event to an input action.
 ## Returns true if the input action does not exist.
