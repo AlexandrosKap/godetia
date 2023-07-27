@@ -9,7 +9,7 @@ static func to_tile(sprite: Sprite2D,  region: Rect2) -> void:
 	sprite.region_rect = region
 
 static func new_tile(tileset: Texture2D, region: Rect2) -> Sprite2D:
-	var sprite := Sprite2D.new()
-	sprite.texture = tileset
-	to_tile(sprite, region)
-	return sprite
+	var result := Sprite2D.new()
+	result.texture = tileset
+	to_tile(result, region)
+	return result
