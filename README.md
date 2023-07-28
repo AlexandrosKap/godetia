@@ -16,6 +16,7 @@ Things like managing objects in an inventory and other similar things are includ
 * INIWriter
 * InventoryItemData
 * InventorySystem
+* AnimationUtils
 * InputUtils
 * ProjectUtils
 * SpriteUtils2D
